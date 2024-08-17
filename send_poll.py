@@ -13,7 +13,10 @@ def send_poll(chat_id: int, question: str, options: list):
         options (list): options
     """
     URL = f'https://api.telegram.org/bot{TOKEN}/sendPoll'
-    response = requests.post(URL,json={'chat_id': chat_id, 'question': question, 'options': options})
+    response = requests.post(URL, json={
+        'chat_id': chat_id, 
+        'question': question, 
+        'options': options})
     return response.json()
 
 chat_id = 86775091
@@ -24,5 +27,5 @@ options = [
     {'text': 'C#'},
     {'text': 'Java'},
 ]
-
+from pprint import pprint
 pprint(send_poll(chat_id, question, options))
